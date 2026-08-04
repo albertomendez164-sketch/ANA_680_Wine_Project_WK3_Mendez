@@ -66,8 +66,7 @@ http://127.0.0.1:5000
 
 ### GitHub Repository
 
-(Add your GitHub repository URL here)
-
+https://github.com/albertomendez164-sketch/ANA_680_Wine_Project_WK3_Mendez
 ### Heroku Application
 
 (Add your Heroku URL here)
