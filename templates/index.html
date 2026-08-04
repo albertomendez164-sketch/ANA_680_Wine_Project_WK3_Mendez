@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Wine Quality Predictor</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f5f5f5; margin:0; color:#222; }
+    .container { max-width:900px; margin:35px auto; background:white; padding:28px; border-radius:12px; box-shadow:0 4px 18px rgba(0,0,0,.08); }
+    h1 { margin-top:0; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+    label { display:block; font-weight:600; margin-bottom:5px; text-transform:capitalize; }
+    input { width:100%; box-sizing:border-box; padding:10px; border:1px solid #bbb; border-radius:6px; }
+    button { margin-top:20px; padding:12px 20px; border:0; border-radius:7px; cursor:pointer; font-weight:700; }
+    .result { margin-top:20px; padding:14px; background:#eef7ee; border-radius:7px; }
+    .error { margin-top:20px; padding:14px; background:#fdeeee; border-radius:7px; }
+    .note { font-size:.92rem; color:#555; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>Red Wine Quality Predictor</h1>
+  <p>Enter the 11 physicochemical measurements. The linear-regression model predicts a quality score from 0 to 10.</p>
+  <form action="/predict" method="post">
+    <div class="grid">
+      {% for feature in features %}
+      <div>
+        <label for="{{ feature }}">{{ feature }}</label>
+        <input id="{{ feature }}" name="{{ feature }}" type="number" step="any"
+               value="{{ submitted.get(feature, '') if submitted else '' }}" required>
+      </div>
+      {% endfor %}
+    </div>
+    <button type="submit">Predict Quality</button>
+  </form>
+  {% if prediction %}
+  <div class="result"><strong>{{ prediction }}</strong><br>{{ rounded }}</div>
+  {% endif %}
+  {% if error %}
+  <div class="error">{{ error }}</div>
+  {% endif %}
+  <p class="note">Educational model trained on the UCI Wine Quality red-wine dataset.</p>
+</div>
+</body>
+</html>
