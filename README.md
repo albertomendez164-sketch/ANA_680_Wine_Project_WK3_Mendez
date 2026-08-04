@@ -1,48 +1,81 @@
-# Wine Quality Prediction — ANA 680 Assignment 5
+# Wine Quality Prediction – ANA 680 Assignment 5
 
-This project predicts red-wine quality from 11 physicochemical features using
-Scikit-learn linear regression.
+## Project Overview
 
-## Model results
+This project predicts the quality of red wine using a Linear Regression machine learning model trained on the UCI Wine Quality dataset. The application was developed using Flask, containerized with Docker, deployed to Heroku, and includes AWS SageMaker implementations with and without container technology.
+
+## Dataset
+
+- UCI Wine Quality Dataset
+- Red Wine Dataset
+- 1,599 observations
+- 11 physicochemical features
+- Target: Wine Quality (0–10)
+
+## Machine Learning Model
+
+Algorithm:
+- Linear Regression
+
+Evaluation Metrics:
 
 - MAE: 0.5035
 - RMSE: 0.6245
 - R²: 0.4032
 
-The target is an ordinal score, but the assignment specifies linear regression.
-The web application displays both the continuous prediction and its nearest
-whole-number score.
+## Technologies Used
 
-## Main files
+- Python
+- Scikit-learn
+- Flask
+- Docker
+- Heroku
+- AWS SageMaker
+- GitHub Actions
 
-- `Problem_1_Wine_Quality_Heroku.ipynb`
-- `Problem_2_SageMaker_Linear_Regression.ipynb`
-- `app.py`
-- `train_model.py`
-- `wine_quality_model.pkl`
-- `Dockerfile`
-- `heroku.yml`
-- `sagemaker_container/`
-- `tests/test_app.py`
-- `.github/workflows/test.yml`
+## Project Structure
 
-## Run locally
+```text
+app.py
+train_model.py
+templates/
+tests/
+Dockerfile
+Procfile
+requirements.txt
+wine_quality_model.pkl
+Problem_1_Wine_Quality_Heroku.ipynb
+Problem_2_SageMaker_Linear_Regression.ipynb
+```
 
-    python -m venv venv
-    venv\Scripts\activate
-    pip install -r requirements.txt
-    python train_model.py
-    pytest -q
-    python app.py
+## Running Locally
 
-## Run with Docker
+```bash
+pip install -r requirements.txt
+python train_model.py
+python app.py
+```
 
-    docker build --platform linux/amd64 -t wine-quality-app .
-    docker run -p 5000:5000 -e PORT=5000 wine-quality-app
+Application:
 
-## Submission placeholders
+```
+http://127.0.0.1:5000
+```
 
-- GitHub Problem 1 notebook URL: ADD URL
-- Heroku application URL: ADD URL
-- GitHub Problem 2 notebook URL: ADD URL
-- Troubleshooting summary: ADD IF NEEDED
+## Deployment
+
+### GitHub Repository
+
+https://github.com/albertomendez164-sketch/ANA_680_Wine_Project_WK3_Mendez
+
+### Heroku Application
+
+(Add your Heroku URL here)
+
+## Author
+
+Alberto Mendez
+
+National University
+
+ANA 680 – Machine Learning Engineering
